@@ -21,10 +21,10 @@ Run a free local model using Ollama with Python 3.12, and install :contentRefere
 
 ## Introduction
 
-Ollama allows you to run LLMs locally on your machine.  
-In this guide, we use the open-weight model **Qwen**, developed by :contentReference[oaicite:3]{index=3}.
+**Ollama** allows you to run LLMs locally on your machine.  
+In this guide, we use the open-weight model **Qwen**, developed by Alibaba.
 
-:contentReference[oaicite:4]{index=4} is a CLI-based AI coding assistant that lets you work directly inside your terminal with your codebase.
+**Aider** is a CLI-based AI coding assistant that lets you work directly inside your terminal with your codebase.
 
 You can choose different model sizes depending on your hardware:
 - 7B → laptop-friendly
