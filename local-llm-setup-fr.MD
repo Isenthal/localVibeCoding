@@ -111,6 +111,8 @@ pipx inject aider-chat "numpy>=1.26.0"
 Ce projet est sous licence MIT - libre de réutilisation.
 
 # Références
+My LinkedIn : [Julien P.](https://www.linkedin.com/in/julien-p-68834731/?locale=fr)
+
 [Ollama](https://ollama.com/)
 
 [Qwen2.5 coder](https://ollama.com/library/qwen2.5-coder)
