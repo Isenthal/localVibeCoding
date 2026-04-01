@@ -15,7 +15,7 @@ reserve premium models for high-value tasks (reasoning, architecture), and use l
 
 # TL;DR
 
-Run a free local model using Ollama with Python 3.12, and install :contentReference[oaicite:1]{index=1} to get a workflow similar to Claude Code.
+Run a free local model using Ollama with Python 3.12, and install **Aider** to get a workflow similar to Claude Code.
 
 ---
 
