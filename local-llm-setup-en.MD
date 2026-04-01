@@ -118,7 +118,7 @@ Root cause: Python 3.14 removed deprecated APIs used by older packages.
 Fix: 
 `pipx inject aider-chat "numpy>=1.26.0"`
 # License
-MIT License — free to use and modify.
+MIT License — free to use and modify for the open source community.
 
 # References
 My LinkedIn : [Julien P.](https://www.linkedin.com/in/julien-p-68834731/?locale=en)
