@@ -82,6 +82,21 @@ aider --model ollama_chat/codestral
 ```
 
 # Dépannage (Troubleshooting)
+## Invalid model name
+Si pendant l'inférence, vous voyez `litellm.APIConnectionError: Ollama_chatException - {"error":"invalid model name"}` 
+
+Récupérez le nom que comprend Ollama, pour le lancer :
+`ollama list`
+
+Exemple
+```bash
+ollama list | grep qwen
+qwen2.5-coder:latest      dae161e27b0e    4.7 GB    About an hour ago    
+qwen2.5:7b                845dbda0ea48    4.7 GB    2 days ago
+
+aider --model ollama_chat/qwen2.5-coder:latest
+```
+
 ## Le modèle n'a pas l'air de se lancer
 Vérifiez qu'Ollama tourne :
 ```bash
