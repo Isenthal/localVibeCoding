@@ -15,13 +15,13 @@ reserve premium models for high-value tasks (reasoning, architecture), and use l
 
 # TL;DR
 
-Run a free local model using :contentReference[oaicite:0]{index=0} with Python 3.12, and install :contentReference[oaicite:1]{index=1} to get a workflow similar to Claude Code.
+Run a free local model using Ollama with Python 3.12, and install :contentReference[oaicite:1]{index=1} to get a workflow similar to Claude Code.
 
 ---
 
 ## Introduction
 
-:contentReference[oaicite:2]{index=2} allows you to run LLMs locally on your machine.  
+Ollama allows you to run LLMs locally on your machine.  
 In this guide, we use the open-weight model **Qwen**, developed by :contentReference[oaicite:3]{index=3}.
 
 :contentReference[oaicite:4]{index=4} is a CLI-based AI coding assistant that lets you work directly inside your terminal with your codebase.
