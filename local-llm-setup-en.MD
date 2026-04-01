@@ -121,7 +121,8 @@ Fix:
 MIT License — free to use and modify.
 
 # References
-My LinkedIn : https://www.linkedin.com/in/julien-p-68834731/?locale=en
+My LinkedIn : [Julien P.](https://www.linkedin.com/in/julien-p-68834731/?locale=en)
+
 [Ollama](https://ollama.com/)
 
 [Qwen2.5 coder](https://ollama.com/library/qwen2.5-coder)
