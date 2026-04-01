@@ -1,7 +1,9 @@
 # Unlimited Local Vibe Coding on Linux
-Dépendre d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure en plein milieu ou ralentir un projet à délivrer.
+Dépendre uniquement d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure d'un projet critique. Certains développeurs se sont retrouvés avec un build cassé ou une modification critique incomplète.
 
-Voici comment vibe coder librement sans limite, grâce à un modèle LLM local et l'agent IA **Aider**.
+Leur puissance n'est pas à prouver et permet d'obtenir les meilleurs résultats, mais je vous propose une solution de continuité pour éviter ce type de blocage.
+
+De plus, une utilisation hybride Cloud LLM / Local LLM peut permettre une optimisation FinOps intelligente de votre utilisation de tokens : réserver les tâches à forte valeur (raisonnement, architecture) pour les modèles premium et utiliser le LLM local pour les tâches répétitives ou tests.
 
 <em>Cette méthode est adaptable à Windows sans trop d'efforts (télécharger et installer manuellement les programmes dans les version citées)</em>
 
