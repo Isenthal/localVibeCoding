@@ -1,24 +1,24 @@
-# Unlimited Local Vibe Coding
-Comment vibe coder librement (illimité, modèle open weight), grâce à l'agent IA **Aider** 
-Dépendre d'un LLM payant et de ses quotas de tokens, c'est risquer d'être interrompu pendant une modification majeure en plein milieu ou ralentir un projet à délivrer.
+# Unlimited Local Vibe Coding on Linux
+Dépendre d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure en plein milieu ou ralentir un projet à délivrer.
 
-# Utiliser Ollama en Vibe Coding sur Linux
-Cible : Fedora 43+ et le modèle QWEN
-Le modèle codestral (12Gb) est particulièrement bon pour coder avec Aider, mais il fait 22B.
+Voici comment vibe coder librement sans limite, grâce à un modèle LLM local et l'agent IA **Aider**.
 
-Python 3.12 est le standard de l'industrie à ce jour (2026-04-01) pour faire de l'IA, car toutes les bibliothèques lourdes (Numpy, PyTorch) y sont déjà optimisées et pré-compilées.
-
-Cependant si vous avez une version plus récente, ou que vous restez sur la version de Fedora 43, il faut travailler dans Python 3.12 pour éviter de multiples incompatibilités.
+<em>Cette méthode est adaptable à Windows sans trop d'efforts (télécharger et installer manuellement les programmes dans les version citées)</em>
 
 ## Introduction
-Ollama permet de lancer localement un modèle. Nous verrons ici le modèle open weight Qwen, proposé par Alibaba.
+Ollama permet de lancer le modèle de notre choix. Nous verrons ici le modèle open weight (libre) "Qwen", proposé par Alibaba.
 
 Aider est un outil de chat en ligne de commande qui vous permet de coder avec l'IA directement dans votre terminal. 
-En le couplant à Ollama, vous gardez vos données en local.
-Vous pouvez choisir différents niveaux de performance, par exemple 3B ou 7B pour un laptop et 14B ou 32B si vous avez une carte graphique puissante.
+
+Vous pouvez choisir différents niveaux de performance, par exemple 3B ou 7B pour un laptop et 14B ou 32B si vous avez une carte graphique puissante. Ici pour coder confortablement sur un laptop on peut choisir **qwen2.5:7b**
 
 ## Prérequis
-Avant de commencer, assurez-vous d'avoir les outils de compilation nécessaires (Fedora n'inclut pas tout par défaut) :
+Avant de commencer, assurez-vous d'avoir les outils de compilation nécessaires.
+
+Python 3.12 est le standard de l'industrie pour faire de l'IA, au jour de la publication.
+
+Cependant si vous avez déjà une version plus récente, (ce qui est le cas sur Fedora 43), il faut isoler un environnement Python 3.12 pour éviter de multiples incompatibilités.
+
 ```bash
 sudo dnf install python3 python3-pip
 python3 --version
@@ -31,18 +31,9 @@ sudo dnf install python3-devel gcc gcc-c++
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Vérifiez qu'Ollama tourne :
-```bash
-curl http://localhost:11434
-```
-
-Sinon, vous pouvez lancer manuellement Ollama :
-```bash
-sudo systemctl start ollama
-```
-
 ## Installation d'Aider
-Sur Fedora 43+, Python 3.14 peut causer des erreurs de compilation avec les anciennes versions de numpy. La méthode la plus fiable est d'isoler l'installation.
+Sur Fedora 43+, Python 3.14 peut causer des erreurs de compilation avec les anciennes versions de numpy. La méthode la plus fiable est d'isoler l'installation, grâce à pipx. 
+=> Ainsi, pas besoin de jongler avec des environnements avec .venv
 ```bash
 sudo dnf install pipx
 pipx ensurepath
@@ -56,7 +47,7 @@ pipx install aider-chat
 ollama run qwen2.5:7b
 ```
 2 - Configurez l'accès API :
-Aider a besoin de l'URL de l'API Ollama pour communiquer. Ajoutez ceci à votre .bashrc ou .zshrc
+Aider a besoin de l'URL de l'API Ollama pour communiquer. Ajoutez ceci à votre ~/.bashrc ou ~/.zshrc
 ```bash
 export OLLAMA_API_BASE=http://localhost:11434
 ```
@@ -65,12 +56,28 @@ Une fois configuré, placez-vous dans votre projet Git et lancez :
 ```bash
 aider --model ollama/qwen2.5:7b
 ```
+# Evolution
+Vous pouvez télécharger et lancer le modèle Codestral de Mistral AI pour davantage de performances (modèle 22B optimisé code) : 
+```bash
+ollama pull codestral & ollama run codestral 
+aider --model ollama/codestral
+```
+
 # Dépannage (Troubleshooting)
+## Le modèle n'a pas l'air de se lancer
+Vérifiez qu'Ollama tourne :
+```bash
+curl http://localhost:11434
+```
+Sinon, vous pouvez lancer manuellement Ollama :
+```bash
+sudo systemctl start ollama
+```
+## Erreur ImpImporter
 Si vous rencontrez l'erreur suivante :
 AttributeError: module 'pkgutil' has no attribute 'ImpImporter'
 
-Cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
-
+Root cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
 Solution : Forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
 
 ```bash
