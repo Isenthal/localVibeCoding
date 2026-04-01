@@ -5,12 +5,15 @@ Voici comment vibe coder librement sans limite, grâce à un modèle LLM local e
 
 <em>Cette méthode est adaptable à Windows sans trop d'efforts (télécharger et installer manuellement les programmes dans les version citées)</em>
 
+# TL;DR
+Lancer un modèle gratuit au travers d'Ollama, avec Python 3.12. Installez **Aider** pour pouvoir travailler comme sur **Claude code**.
+
 ## Introduction
-Ollama permet de lancer le modèle de notre choix. Nous verrons ici le modèle open weight (libre) "Qwen", proposé par Alibaba.
+**Ollama** permet de lancer le modèle de notre choix. Nous verrons ici le modèle open weight (libre) "Qwen", proposé par Alibaba.
 
-Aider est un outil de chat en ligne de commande qui vous permet de coder avec l'IA directement dans votre terminal. 
+**Aider** est un outil de chat en ligne de commande qui vous permet de coder avec l'IA directement dans votre terminal. 
 
-Vous pouvez choisir différents niveaux de performance, par exemple 3B ou 7B pour un laptop et 14B ou 32B si vous avez une carte graphique puissante. Ici pour coder confortablement sur un laptop on peut choisir **qwen2.5:7b**
+Vous pouvez choisir différents niveaux de performance, par exemple 7B pour un laptop et 14B ou 32B si vous avez une carte graphique puissante. Ici pour coder confortablement on peut choisir **qwen2.5-coder:7b**.
 
 ## Prérequis
 Avant de commencer, assurez-vous d'avoir les outils de compilation nécessaires.
@@ -23,7 +26,7 @@ Cependant si vous avez déjà une version plus récente, (ce qui est le cas sur 
 sudo dnf install python3 python3-pip
 python3 --version
 sudo dnf groupinstall "Development Tools"
-sudo dnf install python3-devel gcc gcc-c++
+sudo dnf install python3.12 python3.12-devel gcc gcc-c++
 ```
 
 ## Installation d'Ollama
@@ -32,19 +35,32 @@ curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 ## Installation d'Aider
-Sur Fedora 43+, Python 3.14 peut causer des erreurs de compilation avec les anciennes versions de numpy. La méthode la plus fiable est d'isoler l'installation, grâce à pipx. 
-=> Ainsi, pas besoin de jongler avec des environnements avec .venv
+Sur Fedora 43+, Python 3.14 peut causer des erreurs de compilation avec les anciennes versions de numpy. La méthode la plus fiable est d'isoler l'installation, grâce à pipx.
+
+=> Ainsi, pas besoin de jongler avec de multiples environnements .venv
 ```bash
 sudo dnf install pipx
 pipx ensurepath
-# Installation forcée avec une version de numpy compatible
-pipx install aider-chat
+pipx install aider-chat --python /usr/bin/python3.12
 ```
+C'est ici que la magie opère, on n'a pas besoin de configurer d'environnement, il a suffit de dire à pipx de cibler le binaire Python en version 3.12 et il se débrouillera ensuite pour tout faire de façon transparente.
+
+## Repository Git
+Si vous ne l'avez pas déjà fait, vous pouvez initialiser git dans votre répertoire de travail :
+```bash
+git init
+git config --global init.defaultBranch main
+git config user.name "votre nom"
+git config user.email "toi@exemple.com"
+```
+
+Si vous ne le faites pas, **Aider** se débrouillera tout seul et initialisera un repo par défaut. Mais pour publier votre travail il faudra le faire à un moment ou à un autre.
+Aider est un agent Git. S'il n'y a pas de repo, il perd 50% de sa puissance (pas de undo, pas de commits auto).
 
 ## Configuration d'Ollama
 1 - Lancez votre modèle :
 ```bash
-ollama run qwen2.5:7b
+ollama run qwen2.5-coder:7b
 ```
 2 - Configurez l'accès API :
 Aider a besoin de l'URL de l'API Ollama pour communiquer. Ajoutez ceci à votre ~/.bashrc ou ~/.zshrc
@@ -52,15 +68,15 @@ Aider a besoin de l'URL de l'API Ollama pour communiquer. Ajoutez ceci à votre 
 export OLLAMA_API_BASE=http://localhost:11434
 ```
 ## Lancer Aider avec Qwen
-Une fois configuré, placez-vous dans votre projet Git et lancez :
+Une fois configuré, dans un nouveau terminal, placez-vous dans votre projet Git et lancez :
 ```bash
-aider --model ollama/qwen2.5:7b
+aider --model ollama_chat/qwen2.5-coder:7b
 ```
 # Evolution
 Vous pouvez télécharger et lancer le modèle Codestral de Mistral AI pour davantage de performances (modèle 22B optimisé code) : 
 ```bash
-ollama pull codestral & ollama run codestral 
-aider --model ollama/codestral
+ollama pull codestral && ollama run codestral 
+aider --model ollama_chat/codestral
 ```
 
 # Dépannage (Troubleshooting)
@@ -73,15 +89,20 @@ Sinon, vous pouvez lancer manuellement Ollama :
 ```bash
 sudo systemctl start ollama
 ```
+## Erreur "Python 3.12 not found"
+`which python3.12` permet de confirmer que le chemin est bien `/usr/bin/python3.12`.
+
+Si votre chemin est différent, il faut faire `pipx install aider-chat --python /chemin/de/python3.12 --force` 
+
 ## Erreur ImpImporter
 Si vous rencontrez l'erreur suivante :
 AttributeError: module 'pkgutil' has no attribute 'ImpImporter'
 
 Root cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
-Solution : Forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
+Solution : forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
 
 ```bash
-pip install "numpy>=1.26.0"
+pipx inject aider-chat "numpy>=1.26.0"
 ```
 
 # Licence
@@ -90,8 +111,8 @@ Ce projet est sous licence MIT - libre de réutilisation.
 # Références
 [Ollama](https://ollama.com/)
 
+[Qwen2.5 coder](https://ollama.com/library/qwen2.5-coder)
 
-[Codestral](https://mistral.ai/news/codestral)
-
+[Mistral AI Codestral](https://mistral.ai/news/codestral)
 
 [Aider](https://aider.chat/#getting-started)
