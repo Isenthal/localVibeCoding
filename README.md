@@ -1,15 +1,14 @@
 # Unlimited Local Vibe Coding
 Comment vibe coder librement (illimité, modèle open weight), grâce à l'agent IA **Aider** 
-Dépendre d'un LLM payant et de ses quotas de tokens, qui peuvent interrompre une modification majeure en plein milieu.
+Dépendre d'un LLM payant et de ses quotas de tokens, c'est risquer d'être interrompu pendant une modification majeure en plein milieu ou ralentir un projet à délivrer.
 
 # Utiliser Ollama en Vibe Coding sur Linux
-Cible : Fedora 43+ et modèle Qwen2.5.
-
-D'autres modèles existent : mistral-nemo (12B), mistral (7B).
+Cible : Fedora 43+ et le modèle QWEN
+Le modèle codestral (12Gb) est particulièrement bon pour coder avec Aider, mais il fait 22B.
 
 Python 3.12 est le standard de l'industrie à ce jour (2026-04-01) pour faire de l'IA, car toutes les bibliothèques lourdes (Numpy, PyTorch) y sont déjà optimisées et pré-compilées.
 
-Cependant si vous avez une version plus récente, nous verrons aussi comment résoudre les problèmes de compatibilité (Python 3.14+).
+Cependant si vous avez une version plus récente, ou que vous restez sur la version de Fedora 43, il faut travailler dans Python 3.12 pour éviter de multiples incompatibilités.
 
 ## Introduction
 Ollama permet de lancer localement un modèle. Nous verrons ici le modèle open weight Qwen, proposé par Alibaba.
@@ -21,6 +20,8 @@ Vous pouvez choisir différents niveaux de performance, par exemple 3B ou 7B pou
 ## Prérequis
 Avant de commencer, assurez-vous d'avoir les outils de compilation nécessaires (Fedora n'inclut pas tout par défaut) :
 ```bash
+sudo dnf install python3 python3-pip
+python3 --version
 sudo dnf groupinstall "Development Tools"
 sudo dnf install python3-devel gcc gcc-c++
 ```
@@ -30,7 +31,7 @@ sudo dnf install python3-devel gcc gcc-c++
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
-Vérifiez qu'Ollam tourne :
+Vérifiez qu'Ollama tourne :
 ```bash
 curl http://localhost:11434
 ```
@@ -69,6 +70,7 @@ Si vous rencontrez l'erreur suivante :
 AttributeError: module 'pkgutil' has no attribute 'ImpImporter'
 
 Cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
+
 Solution : Forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
 
 ```bash
@@ -79,6 +81,10 @@ pip install "numpy>=1.26.0"
 Ce projet est sous licence MIT - libre de réutilisation.
 
 # Références
-https://ollama.com/
-https://ollama.com/library/qwen2.5
-https://aider.chat/#getting-started
+[Ollama](https://ollama.com/)
+
+
+[Codestral](https://mistral.ai/news/codestral)
+
+
+[Aider](https://aider.chat/#getting-started)
