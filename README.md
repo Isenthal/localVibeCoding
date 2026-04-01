@@ -1,24 +1,43 @@
-# localVibeCoding
-Comment coder librement sans dépendre d'un LLM payant.
+# Unlimited Local Vibe Coding
+Comment vibe coder librement (illimité, modèle open weight), grâce à l'agent IA **Aider** 
+Dépendre d'un LLM payant et de ses quotas de tokens, qui peuvent interrompre une modification majeure en plein milieu.
 
-# Utiliser Aider avec Ollama (modèle open weight Qwen2.5) sur Fedora 43+
+# Utiliser Ollama en Vibe Coding sur Linux
+Cible : Fedora 43+ et modèle Qwen2.5.
 
-Ce tutoriel explique comment installer l'agent IA **Aider** et le connecter à un modèle local avec **Ollama**
-Python 3.12 est la bonne version à utiliser à ce jour (2026-04-01)
+D'autres modèles existent : mistral-nemo (12B), mistral (7B).
+
+Python 3.12 est le standard de l'industrie à ce jour (2026-04-01) pour faire de l'IA, car toutes les bibliothèques lourdes (Numpy, PyTorch) y sont déjà optimisées et pré-compilées.
 
 Cependant si vous avez une version plus récente, nous verrons aussi comment résoudre les problèmes de compatibilité (Python 3.14+).
 
 ## Introduction
+Ollama permet de lancer localement un modèle. Nous verrons ici le modèle open weight Qwen, proposé par Alibaba.
+
 Aider est un outil de chat en ligne de commande qui vous permet de coder avec l'IA directement dans votre terminal. 
 En le couplant à Ollama, vous gardez vos données en local.
 Vous pouvez choisir différents niveaux de performance, par exemple 3B ou 7B pour un laptop et 14B ou 32B si vous avez une carte graphique puissante.
 
 ## Prérequis
 Avant de commencer, assurez-vous d'avoir les outils de compilation nécessaires (Fedora n'inclut pas tout par défaut) :
-
 ```bash
 sudo dnf groupinstall "Development Tools"
 sudo dnf install python3-devel gcc gcc-c++
+```
+
+## Installation d'Ollama
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+```
+
+Vérifiez qu'Ollam tourne :
+```bash
+curl http://localhost:11434
+```
+
+Sinon, vous pouvez lancer manuellement Ollama :
+```bash
+sudo systemctl start ollama
 ```
 
 ## Installation d'Aider
@@ -51,9 +70,15 @@ AttributeError: module 'pkgutil' has no attribute 'ImpImporter'
 
 Cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
 Solution : Forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
-Bash
 
+```bash
 pip install "numpy>=1.26.0"
+```
 
 # Licence
 Ce projet est sous licence MIT - libre de réutilisation.
+
+# Références
+https://ollama.com/
+https://ollama.com/library/qwen2.5
+https://aider.chat/#getting-started
