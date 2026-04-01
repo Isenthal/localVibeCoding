@@ -1,5 +1,5 @@
 # Unlimited Local Vibe Coding on Linux
-Dépendre uniquement d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure d'un projet critique. Certains développeurs se sont retrouvés avec un build cassé ou une modification critique incomplète.
+Dépendre uniquement d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure d'un projet critique. Certains développeurs se sont retrouvés avec un build cassé ou une modification urgente bloquée.
 
 La puissance des LLM n'est plus à prouver et permet d'obtenir les meilleurs résultats, mais je vous propose une solution de continuité pour éviter ce type de blocage.
 
