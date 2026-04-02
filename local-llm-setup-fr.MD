@@ -25,10 +25,9 @@ Python 3.12 est le standard de l'industrie pour faire de l'IA, au jour de la pub
 Cependant si vous avez déjà une version plus récente, (ce qui est le cas sur Fedora 43), il faut isoler un environnement Python 3.12 pour éviter de multiples incompatibilités.
 
 ```bash
-sudo dnf install python3 python3-pip
-python3 --version
 sudo dnf groupinstall "Development Tools"
 sudo dnf install python3.12 python3.12-devel gcc gcc-c++
+python3.12 --version
 ```
 
 ## Installation d'Ollama
@@ -86,6 +85,7 @@ aider --model ollama_chat/codestral
 Si pendant l'inférence, vous voyez `litellm.APIConnectionError: Ollama_chatException - {"error":"invalid model name"}` 
 
 Récupérez le nom que comprend Ollama, pour le lancer :
+
 `ollama list`
 
 Exemple
@@ -116,14 +116,14 @@ Si vous rencontrez l'erreur suivante :
 AttributeError: module 'pkgutil' has no attribute 'ImpImporter'
 
 Root cause : Python 3.14 a supprimé des fonctions obsolètes utilisées par les vieux paquets.
-Solution : forcez la mise à jour de numpy dans votre environnement avant d'installer Aider :
+Solution : forcez la mise à jour de numpy dans votre environnement :
 
 ```bash
 pipx inject aider-chat "numpy>=1.26.0"
 ```
 
 # Licence
-Ce projet est sous licence MIT - libre de réutilisation.
+Cette documentation est sous licence MIT - libre de réutilisation.
 
 # Références
 My LinkedIn : [Julien P.](https://www.linkedin.com/in/julien-p-68834731/?locale=fr)
