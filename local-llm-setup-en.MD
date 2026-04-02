@@ -43,8 +43,8 @@ Python 3.12 is widely compatible with current AI tooling at the time of writing.
 If you're running a newer version (e.g., Fedora 43 with Python 3.14), it is recommended to isolate Python 3.12 to avoid compatibility issues.
 
 ```bash
-sudo dnf groupinstall "Development Tools"
-sudo dnf install python3.12 python3.12-devel gcc gcc-c++
+sudo dnf group install "Development Tools"
+sudo dnf install python3.12 python3.12-devel python3.12-pip
 python3.12 --version
 ```
 
