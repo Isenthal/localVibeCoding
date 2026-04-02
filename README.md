@@ -1,10 +1,10 @@
 # Unlimited Local Vibe Coding on Linux
 Dépendre uniquement d'un LLM payant et de ses quotas de tokens, c'est risquer d'être **interrompu** pendant une modification majeure d'un projet critique. Certains développeurs se sont retrouvés avec un build cassé ou une modification critique incomplète.
 
-Ce guide vous apprend à transformer votre machine Linux en une station de "Vibe Coding" autonome, sans limites et 100% privée.
+Ce guide vous apprend à transformer votre machine Linux en une station de "Vibe Coding" autonome, sans limites et privée.
 
 # Le Concept
-Le Vibe Coding, c'est déléguer l'écriture, les tests et le débogage à une IA tout en gardant le contrôle créatif.
+Le Vibe Coding, c'est déléguer l'écriture, les tests et le débogage à une IA tout en gardant le contrôle créatif et la direction du projet.
 
     Ollama : Le moteur qui fait tourner les modèles (LLM).
 
