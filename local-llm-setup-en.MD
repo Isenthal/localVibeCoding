@@ -43,10 +43,9 @@ Python 3.12 is widely compatible with current AI tooling at the time of writing.
 If you're running a newer version (e.g., Fedora 43 with Python 3.14), it is recommended to isolate Python 3.12 to avoid compatibility issues.
 
 ```bash
-sudo dnf install python3 python3-pip
-python3 --version
 sudo dnf groupinstall "Development Tools"
 sudo dnf install python3.12 python3.12-devel gcc gcc-c++
+python3.12 --version
 ```
 
 ## Install Ollama
