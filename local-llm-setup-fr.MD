@@ -25,8 +25,8 @@ Python 3.12 est le standard de l'industrie pour faire de l'IA, au jour de la pub
 Cependant si vous avez déjà une version plus récente, (ce qui est le cas sur Fedora 43), il faut isoler un environnement Python 3.12 pour éviter de multiples incompatibilités.
 
 ```bash
-sudo dnf groupinstall "Development Tools"
-sudo dnf install python3.12 python3.12-devel gcc gcc-c++
+sudo dnf group install "Development Tools"
+sudo dnf install python3.12 python3.12-devel python3.12-pip
 python3.12 --version
 ```
 
